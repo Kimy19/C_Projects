@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:22:25 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:47:18 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 15:05:09 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int					i;
+	size_t				i;
 	const unsigned char	*str1;
 	const unsigned char	*str2;
 

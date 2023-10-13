@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 17:55:46 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/12 18:33:35 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 16:46:50 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,14 @@ int	count_str(char const *s, char c)
 	count = 0;
 	while (*s)
 	{
-		if (*s != c && (*(s+1) == c || !*(s + 1)))
+		if (*s != c && (*(s + 1) == c || !*(s + 1)))
 			count++;
 		s++;
 	}
 	return (count);
 }
-void	split_strs(char **res, char const *s, char c)
+
+int	split_strs(char **res, char const *s, char c)
 {
 	int			size;
 	int			index;
@@ -50,8 +51,10 @@ void	split_strs(char **res, char const *s, char c)
 				return (0);
 			ft_strlcpy(res[index++], start, size + 1);
 		}
-	}	
+	}
+	return (1);
 }
+
 char	**ft_split(char const *s, char c)
 {
 	int			num_str;
@@ -64,6 +67,7 @@ char	**ft_split(char const *s, char c)
 	if (!res)
 		return (0);
 	res[num_str] = 0;
-	split_strs(res, s, c);
+	if (!split_strs(res, s, c))
+		return (0);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:52:20 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:02:53 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 14:58:31 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	*ft_memcpy(void *restrict dst, void *restrict src, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n)

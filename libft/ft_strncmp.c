@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:59:30 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 15:21:16 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 14:59:22 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (*s1 && *s2 && i < n)

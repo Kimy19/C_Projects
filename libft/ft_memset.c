@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 12:18:36 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:00:54 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 16:46:31 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	*ft_memset(void *b, int c, size_t len)
 {
-	int	i;
+	size_t			i;
+	unsigned char	*temp;
 
+	temp = (unsigned char *)b;
 	i = 0;
 	while (i < len)
 	{
-		*(unsigned char *)b = c;
-		b++;
+		*temp = c;
+		temp++;
 		i++;
 	}
 	return (b);
@@ -31,7 +33,7 @@ void	*ft_memset(void *b, int c, size_t len)
 // {
 // 	char *a;
 
-// 	ft_memset(a,'C',3);
+// 	a = ft_memset(a,'C',3);
 // 	for(int i=0; i<3; i++)
 // 		printf("%c",a[i]);
 // 	return (0);

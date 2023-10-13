@@ -6,12 +6,15 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:42:29 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/12 16:47:35 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 16:31:10 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# include <stddef.h>
+# include <stdlib.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
@@ -39,5 +42,6 @@ char 	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int 	ft_tolower(int c);
 int 	ft_toupper(int c);
+char	**ft_split(char const *s, char c);
 
 #endif

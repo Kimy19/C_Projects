@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 09:45:20 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:57:35 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/13 15:14:12 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	ft_atoi(const char *str)
 
 	is_negative = 0;
 	num = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
 	if (*str == '+' || *str == '-')
 	{
 		if (*str == '-')
