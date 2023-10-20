@@ -6,11 +6,11 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 17:53:06 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/09 16:21:42 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/16 15:49:23 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isascii(int c)
+int	ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);

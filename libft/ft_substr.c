@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:06:54 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/13 16:47:01 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/20 23:25:25 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (0);
-	while (*s && i < len)
+	while (i + start < len_str && i < len)
 	{
 		str[i] = s[i + start];
 		i++;

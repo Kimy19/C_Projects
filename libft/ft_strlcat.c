@@ -6,24 +6,11 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 18:18:55 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:13:08 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/15 22:13:44 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-
-size_t	ft_strlen(const char *s)
-{
-	int	count;
-
-	count = 0;
-	while (*s != '\0')
-	{
-		count++;
-		s++;
-	}
-	return (count);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *restrict dest, const char *restrict src, size_t size)
 {

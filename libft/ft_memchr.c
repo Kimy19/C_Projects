@@ -6,23 +6,34 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:05:11 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:46:41 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/18 21:42:04 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void	*memchr(const void *s, int c, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const unsigned char	*str;
+	unsigned char	*str;
 
-	str = (const unsigned char *)s;
+	str = (unsigned char *)s;
 	while (n > 0)
 	{
-		if (*str == c)
+		if (*str == (unsigned char)c)
 			return ((void *)str);
 		str++;
 		n--;
 	}
 	return (0);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+// 	int tab[7] = {-9,2,1,-1, 0, -2,2};
+
+// 	printf("%s\n",ft_memchr(tab, -1, 7));
+// 	printf("%s",memchr(tab, -1, 7));
+// }

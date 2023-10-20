@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:28:22 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/13 16:45:09 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/20 23:07:33 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*str;
 
+	if (!s1 || !set)
+		return (0);
+	if (!*set)
+		return (ft_strdup(s1));
+	if (!*s1)
+		return (ft_strdup(""));
 	start = 0;
 	end = ft_strlen(s1) - 1;
 	while (s1[start] && ft_strchr(set, s1[start]))
@@ -34,14 +40,21 @@ char	*ft_strtrim(char const *s1, char const *set)
 }
 
 // #include <stdio.h>
+// #include <string.h>
+
 // int main(void)
 // {
-// 	char s1[] = "dIamkimcd";
+// 	char *s1 = "";
+// 	char *s2 = "";
+// 	if (!*s1)
+// 		printf("XX");
+// 	char *ret = ft_strtrim(s1, " \n\t");
 // 	char set[] = "dc";
 // 	char *res;
 
-// 	res = ft_strtrim(s1,set);
-// 	printf("%s",res);
+// 	// res = ft_strtrim(s1,set);
+// 	// printf("%s",res);
+// 	printf("%d",strcmp(ret,s2));
 // 	return (0);
 
 // }

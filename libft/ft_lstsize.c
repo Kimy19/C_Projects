@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:23:27 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/18 21:44:35 by yaekim           ###   ########.fr       */
+/*   Created: 2023/10/15 18:05:57 by yaekim            #+#    #+#             */
+/*   Updated: 2023/10/15 21:50:18 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+int	ft_lstsize(t_list *lst)
 {
-	while (*s)
+	int	count;
+
+	count = 0;
+	while (lst)
 	{
-		if (*(char *)s == (char)c)
-			return ((char *)s);
-		s++;
+		count++;
+		lst = lst->next;
 	}
-	if (c == 0)
-		return ((char *)s);
-	return (0);
+	return (count);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-
-// int main(void)
-// {
-// 	char *str= "\0";
-
-// 	printf("%s\n",strchr(str,1));
-// 	printf("%s\n",ft_strchr(str,1));
-// }

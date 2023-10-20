@@ -1,35 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:23:27 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/18 21:44:35 by yaekim           ###   ########.fr       */
+/*   Created: 2023/10/15 18:13:36 by yaekim            #+#    #+#             */
+/*   Updated: 2023/10/15 18:17:30 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	while (*s)
-	{
-		if (*(char *)s == (char)c)
-			return ((char *)s);
-		s++;
-	}
-	if (c == 0)
-		return ((char *)s);
-	return (0);
+	del(lst->content);
+	free(lst);
 }
-
-// #include <stdio.h>
-// #include <string.h>
-
-// int main(void)
-// {
-// 	char *str= "\0";
-
-// 	printf("%s\n",strchr(str,1));
-// 	printf("%s\n",ft_strchr(str,1));
-// }

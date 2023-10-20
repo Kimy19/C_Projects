@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 16:22:58 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 20:31:07 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/18 21:45:25 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strrchr(const char *s, int c)
 	result = 0;
 	while (*s)
 	{
-		if (*s == c)
+		if (*s == (char)c)
 			result = (char *)s;
 		s++;
 	}

@@ -6,25 +6,11 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 17:16:16 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/11 17:45:44 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/20 22:41:17 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
-
-void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		*(unsigned char *)s = 0;
-		s++;
-		i++;
-	}
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t count, size_t size)
 {
@@ -33,17 +19,28 @@ void	*ft_calloc(size_t count, size_t size)
 	mem = malloc(size * count);
 	if (!mem)
 		return (0);
-	ft_bzero(mem, count);
+	ft_memset(mem, 0, size * count);
 	return (mem);
 }
 
 // #include <stdio.h>
+// #include <string.h>
 
 // int	main(void)
 // {
-// 	int *p;
+// 	int *p1;
+// 	int *p2;
+// 	size_t n= 10;
 
-// 	p = (int *)ft_calloc(5,sizeof(int));
-// 	for(int i = 0; i<7; i++)
-// 		printf("%d\n",p[i]);
+// 	p1 = (int *)ft_calloc(n, 0);
+// 	p2 = (int *)calloc(n, 0);
+
+//  	if (p2 == ((void *)0))
+//  		printf("fail");
+// 	printf("success");
+
+// printf("%d\n",memcmp(p1,p2, n * sizeof(int)));
+
+// for(int i = 0; i<n; i++)
+// 	printf("%d",p1[i]);
 // }

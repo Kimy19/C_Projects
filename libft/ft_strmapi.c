@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/09 16:23:27 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/18 21:44:35 by yaekim           ###   ########.fr       */
+/*   Created: 2023/10/13 18:55:31 by yaekim            #+#    #+#             */
+/*   Updated: 2023/10/15 17:52:24 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(const char *s, int c)
+#include "libft.h"
+
+// char test(unsigned int n, char c)
+// {
+// 	n = 1;
+// 	return (c);
+// }
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	while (*s)
+	unsigned int	i;
+	char			*result;
+
+	i = 0;
+	result = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!result)
+		return (0);
+	while (s[i])
 	{
-		if (*(char *)s == (char)c)
-			return ((char *)s);
-		s++;
+		result[i] = f(i, s[i]);
+		i++;
 	}
-	if (c == 0)
-		return ((char *)s);
-	return (0);
+	result[i] = 0;
+	return (result);
 }
 
 // #include <stdio.h>
-// #include <string.h>
 
 // int main(void)
 // {
-// 	char *str= "\0";
-
-// 	printf("%s\n",strchr(str,1));
-// 	printf("%s\n",ft_strchr(str,1));
+// 	printf("%s",ft_strmapi("abc\0",test));
+// 	return (0);
 // }
