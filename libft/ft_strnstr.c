@@ -6,45 +6,44 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 15:33:47 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/20 22:10:56 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/22 17:48:39 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-unsigned int	len_str(char *str)
+int	check_word(const char *str, const char *word, size_t len)
 {
-	unsigned int	n;
+	size_t	n;
+	size_t	len_word;
 
 	n = 0;
-	while (str[n] != 0)
+	len_word = ft_strlen(word);
+	while (*str && len > 0)
 	{
-		n++;
+		if (*str == *word)
+		{
+			n++;
+			if (n == len_word)
+				return (1);
+			str++;
+			word++;
+			len--;
+		}
+		else
+			return (0);
 	}
-	return (n);
+	return (0);
 }
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	unsigned int	n;
-	unsigned int	len_needle;
-
-	n = 0;
-	len_needle = len_str((char *)needle);
 	if (!*needle)
 		return ((char *)haystack);
 	while (*haystack && len > 0)
 	{
-		if (*haystack == needle[n])
-			n++;
-		else
-		{
-			n = 0;
-			if (*haystack == needle[n])
-				n++;
-		}
-		if (n == len_needle)
-			return ((char *)(haystack + 1 - n));
+		if (check_word(haystack, needle, len))
+			return ((char *)haystack);
 		haystack++;
 		len--;
 	}
@@ -56,11 +55,12 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 // int main(void)
 // {
-// 	char str1[] = "ab cd";
-// 	char str2[] = "cd";
+// 	char str1[] = "aaabcabcd";
+// 	char str2[] = "aabc";
 // 	char *s1 = str1;
 // 	char *s2 = str2;
 // 	int	n = -1;
+// 	size_t num = n;
 // 	printf("%s\n",ft_strnstr(s1,s2,n));
 // 	printf("%s\n",strnstr(s1,s2,-1));
 // }
