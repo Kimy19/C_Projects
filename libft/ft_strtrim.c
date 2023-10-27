@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 16:28:22 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/20 23:07:33 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/27 16:00:36 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	end;
 	char	*str;
 
-	if (!s1 || !set)
-		return (0);
 	if (!*set)
 		return (ft_strdup(s1));
 	if (!*s1)

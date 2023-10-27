@@ -6,9 +6,11 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:13:36 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/15 18:17:30 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/27 16:05:41 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {

@@ -6,9 +6,11 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/15 18:17:45 by yaekim            #+#    #+#             */
-/*   Updated: 2023/10/15 21:33:06 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/10/27 16:05:42 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
