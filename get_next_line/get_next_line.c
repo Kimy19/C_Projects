@@ -6,36 +6,40 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:24:59 by yaekim            #+#    #+#             */
-/*   Updated: 2023/12/14 22:29:55 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/12/22 19:42:49 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	check_line(char *str)
+int	update_str(char **str, size_t size)
 {
-	int	count;
+	char	*temp;
 
-	count = 0;
-	if (!str)
-		return (-1);
-	while (*str)
+	if (*((*str) + size))
 	{
-		count++;
-		if (*str == '\n')
-			return (count);
-		str++;
+		temp = *str;
+		*str = ft_strdup((*str) + size);
+		free(temp);
+		if (!*str)
+			return (1);
 	}
-	return (-1);
+	else
+	{
+		free(*str);
+		*str = NULL;
+	}
+	return (0);
 }
 
-static char	*get_line(char **str, int size)
+static char	*get_line(char **str)
 {
-	char	*line;
-	char	*temp;
+	char		*line;
+	size_t		size;
 
 	if (!*str)
 		return (NULL);
+	size = check_line(*str);
 	line = (char *)malloc(sizeof(char) * size + 1);
 	if (!line)
 	{
@@ -44,21 +48,10 @@ static char	*get_line(char **str, int size)
 		return (NULL);
 	}
 	ft_strlcpy(line, *str, size + 1);
-	// ft_strlcpy(*str, *str+size, ft_strlen(*str) - size + 1);
-	if (*((*str) + size))
+	if (update_str(str, size) == 1)
 	{
-		// printf("%s\n",*str);
-		// printf("%c\n",*((*str) + size));
-		temp = *str;
-		*str = ft_strdup((*str) + size);
-		free(temp);
-		if (!*str)
-			return (NULL);
-	}
-	else
-	{
-		free(*str);
-		*str = NULL;
+		free(line);
+		return (NULL);
 	}
 	return (line);
 }
@@ -100,21 +93,17 @@ char	*get_next_line(int fd)
 	static char	*str;
 	char		buff[BUFFER_SIZE + 1];
 	int			byte;
-	int			size;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	while (1)
 	{
-		size = check_line(str);
-		if (size > 0)
-		{
-			return (get_line(&str, size));
-		}
+		if (check_line(str) > 0)
+			return (get_line(&str));
 		byte = read(fd, buff, BUFFER_SIZE);
-		if (byte == -1) //read error
+		if (byte == -1)
 		{
-				free(str);
+			free(str);
 			str = NULL;
 			return (NULL);
 		}
@@ -129,28 +118,24 @@ char	*get_next_line(int fd)
 
 // #include <fcntl.h>
 // #include <string.h>
-
-
 // void f1()
 // {
 // 	system("leaks a.out");
 // }
 
-// int main(int argc, char *argv[])
+// int main()
 // {
-// 	atexit(f1);
+// 	// atexit(f1);
 
-// 	int fd = open("text.txt",O_RDONLY);
+// 	int fd = open("giant_line_nl.txt",O_RDONLY);
 // 	char *line;
-// 	char buff[10];
 
-// 	system("leaks a.out");
+// 	// system("leaks a.out");
 // 	while (1)
 // 	{
 // 		line = get_next_line(fd);
 // 		if (!line)
 // 			return (0);
-		
 // 		printf("리턴 %s",line);
 // 		free(line);
 

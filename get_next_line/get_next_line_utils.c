@@ -6,11 +6,28 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:25:23 by yaekim            #+#    #+#             */
-/*   Updated: 2023/12/14 22:25:46 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/12/22 19:42:51 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+long long	check_line(char *str)
+{
+	long long	count;
+
+	count = 0;
+	if (!str)
+		return (-1);
+	while (*str)
+	{
+		count++;
+		if (*str == '\n')
+			return (count);
+		str++;
+	}
+	return (-1);
+}
 
 size_t	ft_strlen(char const *str)
 {

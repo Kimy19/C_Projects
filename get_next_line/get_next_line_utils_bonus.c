@@ -6,11 +6,28 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:25:23 by yaekim            #+#    #+#             */
-/*   Updated: 2023/12/01 19:34:15 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/12/22 19:42:04 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line_bonus.h"
+#include "get_next_line.h"
+
+long long	check_line(char *str)
+{
+	long long	count;
+
+	count = 0;
+	if (!str)
+		return (-1);
+	while (*str)
+	{
+		count++;
+		if (*str == '\n')
+			return (count);
+		str++;
+	}
+	return (-1);
+}
 
 size_t	ft_strlen(char const *str)
 {
@@ -37,7 +54,7 @@ char	*ft_strdup(const char *s1)
 	len = ft_strlen(s1);
 	temp = (char *)malloc(sizeof(char) * (len + 1));
 	if (!temp)
-		return (0);
+		return (NULL);
 	while (s1[i])
 	{
 		temp[i] = s1[i];
@@ -59,7 +76,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	len_s2 = ft_strlen(s2);
 	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (!str)
-		return (0);
+		return (NULL);
 	while (*s1)
 		str[i++] = *s1++;
 	while (*s2)
@@ -68,7 +85,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (str);
 }
 
-size_t	ft_strlcpy(char *restrict dest, const char *restrict src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	src_len;
 	size_t	i;
