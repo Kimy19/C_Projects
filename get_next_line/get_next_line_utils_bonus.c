@@ -6,11 +6,11 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:25:23 by yaekim            #+#    #+#             */
-/*   Updated: 2023/12/22 19:42:04 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/12/30 22:25:15 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 long long	check_line(char *str)
 {
@@ -54,7 +54,7 @@ char	*ft_strdup(const char *s1)
 	len = ft_strlen(s1);
 	temp = (char *)malloc(sizeof(char) * (len + 1));
 	if (!temp)
-		return (NULL);
+		return (0);
 	while (s1[i])
 	{
 		temp[i] = s1[i];
@@ -64,28 +64,35 @@ char	*ft_strdup(const char *s1)
 	return ((char *)temp);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+void	join_str(char **str, char *buff)
 {
-	size_t	len_s1;
-	size_t	len_s2;
+	char	*temp;
+	char	*temp2;
 	size_t	i;
-	char	*str;
 
 	i = 0;
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	str = (char *)malloc(sizeof(char) * (len_s1 + len_s2 + 1));
-	if (!str)
-		return (NULL);
-	while (*s1)
-		str[i++] = *s1++;
-	while (*s2)
-		str[i++] = *s2++;
-	str[i] = 0;
-	return (str);
+	if (!*str)
+	{
+		*str = ft_strdup(buff);
+		return ;
+	}
+	temp = *str;
+	temp2 = *str;
+	*str = (char *)malloc((ft_strlen(*str) + ft_strlen(buff) + 1));
+	if (!*str)
+	{
+		free(temp);
+		return ;
+	}
+	while (*temp2)
+		(*str)[i++] = *temp2++;
+	while (*buff)
+		(*str)[i++] = *buff++;
+	(*str)[i] = 0;
+	free(temp);
 }
 
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *restrict dest, const char *restrict src, size_t size)
 {
 	size_t	src_len;
 	size_t	i;

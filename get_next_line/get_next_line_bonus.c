@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:24:59 by yaekim            #+#    #+#             */
-/*   Updated: 2023/12/22 19:41:16 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/12/30 22:25:00 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,12 @@ int	update_str(char **str, size_t size)
 	return (0);
 }
 
-static char	*get_line(char **str)
+static char	*get_line(char **str, char *buff)
 {
 	char		*line;
 	size_t		size;
 
+	free(buff);
 	if (!*str)
 		return (NULL);
 	size = check_line(*str);
@@ -54,20 +55,6 @@ static char	*get_line(char **str)
 		return (NULL);
 	}
 	return (line);
-}
-
-void	join_str(char **str, char *buff)
-{
-	char	*temp;
-
-	if (!*str)
-	{
-		*str = ft_strdup(buff);
-		return ;
-	}
-	temp = *str;
-	*str = ft_strjoin(*str, buff);
-	free(temp);
 }
 
 char	*last_line(char **str)
@@ -88,31 +75,58 @@ char	*last_line(char **str)
 	return (line);
 }
 
+char	*check_return(char **buff, char **str, int byte, int *flag)
+{
+	*flag = 1;
+	if (byte == -1)
+	{
+		free(*str);
+		free(*buff);
+		*str = NULL;
+		return (NULL);
+	}
+	(*buff)[byte] = '\0';
+	if (byte == 0)
+	{
+		free(*buff);
+		return (last_line(str));
+	}
+	join_str(str, *buff);
+	if (!*str)
+	{
+		free(*buff);
+		return (NULL);
+	}
+	*flag = 0;
+	return (NULL);
+}
+
 char	*get_next_line(int fd)
 {
 	static char	*str[OPEN_MAX];
-	char		buff[BUFFER_SIZE + 1];
+	char		*buff;
+	char		*result;
 	int			byte;
+	int			flag;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || OPEN_MAX < fd)
 		return (NULL);
+	buff = (char *)malloc(BUFFER_SIZE + 1);
+	if (!buff)
+	{
+		free(str[fd]);
+		str[fd] = NULL;
+		return (NULL);
+	}
 	while (1)
 	{
 		if (check_line(str[fd]) > 0)
-			return (get_line(&str[fd]));
+			return (get_line(&str[fd], buff));
+		flag = 0;
 		byte = read(fd, buff, BUFFER_SIZE);
-		if (byte == -1)
-		{
-			free(str[fd]);
-			str[fd] = NULL;
-			return (NULL);
-		}
-		buff[byte] = '\0';
-		if (byte == 0)
-			return (last_line(&str[fd]));
-		join_str(&str[fd], buff);
-		if (!str[fd])
-			return (NULL);
+		result = check_return(&buff, &str[fd], byte, &flag);
+		if (flag == 1)
+			return (result);
 	}
 }
 

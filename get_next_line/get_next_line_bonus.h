@@ -6,7 +6,7 @@
 /*   By: yaekim <yaekim@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:32:44 by yaekim            #+#    #+#             */
-/*   Updated: 2023/12/22 19:41:21 by yaekim           ###   ########.fr       */
+/*   Updated: 2023/12/30 22:25:06 by yaekim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@
 
 char		*get_next_line(int fd);
 size_t		ft_strlcpy(char *dest, const char *src, size_t size);
-char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strdup(const char *s1);
 size_t		ft_strlen(char const *str);
 long long	check_line(char *str);
+void		join_str(char **str, char *buff);
 
 #endif
