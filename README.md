@@ -1,4 +1,4 @@
-# C_study
+# C_Projects
 ## Description
 ### 1.libft    
 Implementing a set of functions from the **libc**. Functions have the same prototypes and implement the same behaviors as the originals. Also comply
