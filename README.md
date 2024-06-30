@@ -1,10 +1,25 @@
-# C_Projects
-## Description
+# `42 Seoul` C Projects
+## 각 프로젝트에 대한 설명
 ### 1.libft    
-Implementing a set of functions from the **libc**. Functions have the same prototypes and implement the same behaviors as the originals. Also comply
-with the way they are defined in their man. The only difference is their names. It
-will begin with the ’ft_’ prefix. For instance, strlen becomes ft_strlen.
+- C언어 내장함수들을 직접 구현 및 라이브러리 형태로 만드는 과제
+- `atoi()`, `itoa()`, `split()`, `join()`, `문자열 관련 함수`, `동적할당 함수`, `링크드리스트 함수` 등 **44개의 함수**를 직접 구현
+- Makefile을 사용하여 컴파일 명령어 자동화
+
 
 ### 2.get_next_line
-This project is about programming a function that returns a line
-read from a file descriptor using static variable. It is also structured to impliment on multiple files.
+- 파일 디스크립터로부터 한 줄을 읽어 반환하는 함수 구현
+- 정적 변수를 사용하여 매 호출 시 이전 line 이후를 이어서 반환할 수 있도록 구현
+- 정적변수 리스트를 사용하여 여러 파일에서 호출해도 각 파일의 포인터를 저장할 수 있도록 구현
+- 동적할당 메모리 관리 및 exit 함수 없이 leak 방지
+
+
+### 3. ft_printf
+- C언어 printf 함수 직접 구현
+- `va_list`, `va_start`, `va_arg`, `va_end`와 같은 가변 인자 매크로를 사용하여 고정된 개수의 인자가 아닌, 가변적인 수의 인자를 받아들일 수 있게 구현
+- %i, %d, %u, %c, %p, %x, %X 서식자를 인식해 각각의 기능을 수행할 수 있도록 구현
+
+### 4. minitalk
+- `signal을 활용한 IPC 메세징 프로그램` 구현
+- 비트 마스킹을 활용해 메세지의 각 문자를 8bit의 0,1로 치환
+- custom signal SIGUSR1, SIGUSR2를 이용해 client가 서버로 메세지를 보낼 수 있도록 구현
+- server가 수신한 signal을 토대로 메세지를 복구하고 출력
